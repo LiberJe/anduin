@@ -1,0 +1,29 @@
+{
+  "name": "anduin",
+  "version": "0.3.0",
+  "description": "simple virtual-dom",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "parcel ./example/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiberJe/anduin.git"
+  },
+  "keywords": [
+    "virtual-dom",
+    "vdom"
+  ],
+  "author": "JeLewine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LiberJe/anduin/issues"
+  },
+  "homepage": "https://github.com/LiberJe/anduin#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.6.2"
+  }
+}

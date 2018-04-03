@@ -51,6 +51,6 @@ patch(root, patches)
 
 You can checkout full codes in `example` folder.
 
-## Statement
+## Reference
 
-Inspired by [snabbdom](https://github.com/snabbdom/snabbdom). And the library is only for learning virtual-dom.
+>[snabbdom](https://github.com/snabbdom/snabbdom)

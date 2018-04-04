@@ -20,6 +20,7 @@ const isPrimitive = input => {
 }
 
 const isSameVnode = (oldVnode, vnode) => {
+  if (!oldVnode || !vnode) return false
   return oldVnode.key === vnode.key && oldVnode.tagName === vnode.tagName
 }
 

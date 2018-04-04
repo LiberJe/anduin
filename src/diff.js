@@ -148,6 +148,7 @@ function diffChildren(oldNodes, newNodes, indexObj, patches, currentPatch) {
           })
         } else {
           dfs(moveNode, newStartVnode, indexObj, patches)
+          oldNodes[index] = undefined
           currentPatch.push({
             type: _.patchType.REORDER,
             act: {
@@ -160,38 +161,36 @@ function diffChildren(oldNodes, newNodes, indexObj, patches, currentPatch) {
         }
       }
     }
-
-    if (oldStartIndex > oldEndIndex) {
-      for (; newStartIndex <= newEndIndex; ++newStartIndex) {
-        let node = newNodes[newStartIndex]
-        if (node) {
-          currentPatch.push({
-            type: _.patchType.REORDER,
-            act: {
-              type: _.actType.ADD,
-              node: node,
-              target: newNodes[newEndIndex+1] == null ? null : newEndIndex + 1
-            },
-          })
-        }
-      }
-    } else if (newStartIndex > newEndIndex) {
-      for (; oldStartIndex <= oldEndIndex; oldStartIndex++) {
-        let node = oldNodes[oldStartIndex]
-        if (node) {
-          currentPatch.push({
-            type: _.patchType.REORDER,
-            act: {
-              type: _.actType.DELETE,
-              target: oldStartIndex
-            }
-          })
-        }
-      }
-    }
-
   }
 
+  if (oldStartIndex > oldEndIndex) {
+    for (; newStartIndex <= newEndIndex; ++newStartIndex) {
+      let node = newNodes[newStartIndex]
+      if (node) {
+        currentPatch.push({
+          type: _.patchType.REORDER,
+          act: {
+            type: _.actType.ADD,
+            node: node,
+            target: newNodes[newEndIndex+1] == null ? null : newEndIndex + 1
+          },
+        })
+      }
+    }
+  } else if (newStartIndex > newEndIndex) {
+    for (; oldStartIndex <= oldEndIndex; oldStartIndex++) {
+      let node = oldNodes[oldStartIndex]
+      if (node) {
+        currentPatch.push({
+          type: _.patchType.REORDER,
+          act: {
+            type: _.actType.DELETE,
+            target: oldStartIndex
+          }
+        })
+      }
+    }
+  }
 }
 
 export default diff

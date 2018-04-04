@@ -19,7 +19,7 @@ function dfs(node, patches, indexObj) {
       case _.patchType.REPLACE:
         node.parentNode.replaceChild(patch.node.render(), node)
       case _.patchType.REORDER:
-        let target = patch.act.target || patch.act.start
+        let target = _.isPrimitive(patch.act.target) ? patch.act.target : patch.act.start
         let currentNode = node.childNodes[target]
         setTimeout(() => {
           reorderChildren(node, patch.act, currentNode)
@@ -46,6 +46,7 @@ function reorderChildren(element, patch, currentNode) {
       element.insertBefore(currentNode, element.childNodes[patch.end])
       break
     case _.actType.DELETE:
+      // console.log(currentNode)
       element.removeChild(currentNode)
       break
     default:

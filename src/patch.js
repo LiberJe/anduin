@@ -46,7 +46,6 @@ function reorderChildren(element, patch, currentNode) {
       element.insertBefore(currentNode, element.childNodes[patch.end])
       break
     case _.actType.DELETE:
-      // console.log(currentNode)
       element.removeChild(currentNode)
       break
     default:

@@ -42,11 +42,8 @@ let root = vdom1.render()
 
 document.body.appendChild(root)
 
-// diff two virtual dom trees and get patches
-let patches = diff(vdom1, vdom2)
-
-// apply patches to real dom
-patch(root, patches)
+// diff two virtual dom trees and apply patches to real dom
+patch(root, patches, root)
 ``` 
 
 You can checkout full codes in `example` folder.

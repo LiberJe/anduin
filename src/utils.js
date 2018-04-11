@@ -37,6 +37,12 @@ const mapKeyToIndex = (nodes, begin, end) => {
   return map
 }
 
+const delay = (...params) => (fnc, time) => {
+  setTimeout(() => {
+    fnc(...params)
+  }, time)
+}
+
 export default {
   patchType,
   actType,
@@ -44,4 +50,5 @@ export default {
   isArray,
   isSameVnode,
   mapKeyToIndex,
+  delay,
 }

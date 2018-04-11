@@ -3,7 +3,7 @@ import anduin from "../index.js"
 const { h, diff, patch } = anduin
 
 let vdom1 = h("div", {}, [
-  h("h1", {}, 0),
+  h("div", {}, 0),
   h("button", { }, "-"),
   h("button", { }, "+"),
   h("ul", {}, [
@@ -16,6 +16,13 @@ let vdom1 = h("div", {}, [
 
 let vdom2 = h("div", {}, [
   h("h1", {}, 1),
+  h("h1", {}, 1),
+  h("h1", {}, 1),
+  h("div", {}, [
+    h('li', { key: 'q' }, 'q'),
+    h('li', { key: 'w' }, 'w'),
+    h('li', { key: 'r' }, 'r'),
+  ]),
   h("button", { props: 'hashKey' }, "-"),
   h("button", { }, "+"),
   h("ul", {}, [
@@ -25,6 +32,9 @@ let vdom2 = h("div", {}, [
     h('li', { key: 'd' }, 'd'),
     h("li", { key: 'c' }, 'c'),
     h('li', { key: 'e' }, 'e'),
+    h('div', {}, [
+      h('li', { key: 'p' }, 'p'),
+    ])
   ])
 ])
 
@@ -32,10 +42,5 @@ let root = vdom1.render()
 
 document.body.appendChild(root)
 
-console.log(vdom1, vdom2)
+patch(vdom1, vdom2, root)
 
-let patches = diff(vdom1, vdom2)
-
-console.log(patches)
-
-patch(root, patches)

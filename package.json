@@ -1,6 +1,6 @@
 {
   "name": "anduin",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "simple virtual-dom",
   "main": "index.js",
   "directories": {
